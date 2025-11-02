@@ -1,7 +1,22 @@
-TTS==0.21.3
-numpy==1.24.0
-openai-whisper @ git+https://github.com/openai/whisper.git
-googletrans==4.0.0-rc1
-torch
-transformers
-gradio
+# TTS==0.21.3
+# numpy==1.24.0
+# openai-whisper @ git+https://github.com/openai/whisper.git
+# googletrans==4.0.0-rc1
+# torch
+# transformers
+# gradio
+
+torch==2.4.1
+torchaudio==2.4.1
+moviepy==1.0.3
+numpy==1.22.0
+scipy==1.11.2
+pandas==1.5.3
+pillow==10.3.0
+gradio==4.44.0
+tts==0.21.1
+deep-translator==1.11.4
+whisper==1.1.10
+ffmpeg-python==0.2.0
+transformers==4.36.2
+huggingface-hub==0.19.4

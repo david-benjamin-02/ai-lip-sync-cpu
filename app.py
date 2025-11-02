@@ -11,7 +11,6 @@ from TTS.tts.models.xtts import XttsAudioConfig
 from TTS.config.shared_configs import BaseDatasetConfig
 import pickle
 from moviepy.editor import concatenate_videoclips, VideoFileClip, CompositeVideoClip
-
 # Fix pickle issues
 pickle.loads(pickle.dumps(XttsArgs()))
 pickle.loads(pickle.dumps(XttsConfig()))
@@ -26,6 +25,7 @@ def extract_audio(video_path):
     if os.path.exists(audio_path):
         os.remove(audio_path)
     cmd = ["ffmpeg", "-i", video_path, "-acodec", "pcm_s16le", "-ar", "16000", "-ac", "1", "-y", audio_path]
+    
     subprocess.run(cmd, check=True)
     return audio_path
 
@@ -80,7 +80,7 @@ def synthesize_speech_with_alignment(text, audio_path, lang, timestamps):
 # Step 5: Apply Wav2Lip
 
 def apply_wav2lip(original_video, translated_audio):
-    python_exec = r"D:\\django\\ai-lipsync\\Wav2Lip\\venv_wav\\Scripts\\python.exe"
+    python_exec = r"D:\\AI\\ai-lipsync-cpu\\Wav2Lip\\venv_wav\\Scripts\\python.exe"
     output_video = "lip_synced_video.mp4"
     cmd = [
         python_exec, "Wav2Lip/inference.py",
@@ -89,6 +89,7 @@ def apply_wav2lip(original_video, translated_audio):
         "--audio", translated_audio,
         "--outfile", output_video
     ]
+    print("Running command:", cmd)
     subprocess.run(cmd, check=True)
     return output_video
 
